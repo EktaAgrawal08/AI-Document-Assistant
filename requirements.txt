@@ -1,0 +1,11 @@
+streamlit==1.35.0
+langchain==0.1.242
+langchain-community==0.0.19  # for PDFPlumberLoader
+pdfplumber==0.10.3
+numpy==1.26.4
+scikit-learn==1.4.2
+requests==2.31.0
+python-docx==0.8.11        # for DOCX support
+pillow==10.0.0             # for image handling
+pytesseract==0.3.10        # for OCR
+fpdf==1.7.2                # for exporting chat as PDF
