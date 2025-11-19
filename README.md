@@ -1,87 +1,147 @@
-# RAG-Based University Assistant Chatbot
 
-This is an AI chatbot that helps university students by answering their questions using uploaded PDF files. It uses a method called RAG (Retrieval-Augmented Generation) and Google’s Gemini API to find answers from the document.
+# **AI Document Assistant — Multi-Format RAG Chatbot**
 
-This chatbot was made as a semester project
+AI Document Assistant is a smart multi-format **document question-answering system** built using **Python, Streamlit, and Google Gemini API**.
+It allows users to upload files (PDF, DOCX, TXT, Images) and ask questions directly from the document contents using a **Retrieval-Augmented Generation (RAG)** pipeline.
 
+This project was created as part of my semester coursework.
 
-## Project Goal
+---
 
-Many students ask the same questions again and again on WhatsApp, Instagram, and YouTube which gets hard to answer. This chatbot gives automatic answers to help solve that problem.
+## **Features**
 
+### **Document Upload (Multi-format)**
 
+Supports:
 
-## How We Collected Data
+* PDF
+* DOCX
+* TXT
+* Images (JPG/PNG with OCR)
 
-To make this chatbot useful:
+### **Accurate Answers Using RAG**
 
-- We visited 20 different university websites in Pakistan and copied their FAQs (Frequently Asked Questions).
-- We also asked students to fill out a form with their own questions.
-- We combined all these questions and answers into one PDF.
-- This PDF was used by the chatbot to answer questions.
+* Extracts text from uploaded files
+* Splits text into chunks
+* Embeds chunks using **Gemini text-embedding-004**
+* Retrieves relevant chunks based on cosine similarity
+* Uses **Gemini 2.0 Flash** to generate final answers
+* Responds *only* from the uploaded documents
 
+### **Chat System**
 
+* Modern dark UI
+* Chat history maintained
+* Follow-up questions supported
+* Download chat as PDF
 
-## What This Chatbot Can Do
+### **Local Processing**
 
-- Reads PDF files like brochures, admission guides, and FAQs.
-- Understands student questions.
-- Gives quick and smart answers using AI.
+* Files stored temporarily inside `chat-with-pdf/pdfs/`
+* No cloud storage
+* No external database
 
+---
 
-## Features
+## **Tech Stack**
 
-- Upload university-related PDF documents (in our case -> university_faq.pdf)
-- Breaks the PDF into small parts for better understanding.
-- Turns those parts into a format that AI can understand.
-- Finds the best parts of the PDF related to your question.
-- Gives a short and helpful answer using Google's Gemini AI.
-- Easy-to-use web app made with Streamlit.
+| Component        | Technology                |
+| ---------------- | ------------------------- |
+| User Interface   | Streamlit                 |
+| Backend          | Python                    |
+| LLM              | Gemini 2.0 Flash          |
+| Embeddings       | text-embedding-004        |
+| Document Parsing | PDFPlumber, python-docx   |
+| OCR              | Pytesseract               |
+| Vector Search    | NumPy + Cosine Similarity |
+| PDF Export       | FPDF                      |
 
+---
 
+## **How It Works**
 
-## Tools and Technologies Used
+1. User uploads one or more documents
+2. Text is extracted
+3. Text is split into manageable chunks
+4. Chunks are converted into embeddings
+5. User query is embedded
+6. Similar chunks are retrieved using cosine similarity
+7. Gemini Flash generates an answer using only the retrieved context
+8. The response is displayed in the chat interface
 
-- Python
-- LangChain
-- Streamlit
-- PDFPlumber
-- NumPy
-- scikit-learn
-- Google Gemini API
+---
 
+## **Installation**
 
-## How It Works
+### **1. Clone the Repository**
 
-1. Upload a PDF file (for example: university FAQs).
-2. The chatbot reads and splits the content into small parts.
-3. You type a question (for example: "What documents are needed for NTS?").
-4. The chatbot finds the most relevant parts from the PDF.
-5. It uses those parts to give a short and correct answer.
+```bash
+git clone https://github.com/EktaAgrawal08/AI-Document-Assistant.git
+cd AI-Document-Assistant
+```
 
-### How to run this
-### 1. Clone the Repository
-- git clone https://github.com/SohaibBazaz/rag-university-chatbot.git
-- cd rag-university-chatbot
+### **2. Create Virtual Environment (PowerShell)**
 
-### 2. Install Libraries:
-- pip install -r requirements.txt
+```powershell
+python -m venv venv
+venv\Scripts\activate
+```
 
-### 3. Run the program:
-- streamlit run University_Assistant.py
+### **3. Install Dependencies**
 
-## Future Plans
+```bash
+pip install -r requirements.txt
+```
 
-- Add human support when the AI can’t answer.
-- Add voice support so users can speak their questions.
-- Make a mobile app for easy access on phones.
-- Add Urdu language support.
+### **4. Set Gemini API Key (Windows PowerShell)**
 
+```powershell
+setx GEMINI_API_KEY "your_api_key_here"
+```
 
-## Team Members
+Close PowerShell after this once.
 
-- Sohaib Ahmed Bazaz
-- Muhammad Umar 
-- Maaz Akram 
+---
+
+## **Run the Application**
+
+```bash
+streamlit run University_Assistant.py
+```
+
+---
+
+## **Project Structure**
+
+```
+AI-Document-Assistant/
+│
+├─ University_Assistant.py
+├─ requirements.txt
+├─ README.md
+│
+└─ chat-with-pdf/
+   └─ pdfs/        # Temporarily stored files
+```
+
+---
+
+## **Future Enhancements**
+
+* Add light mode toggle
+* Implement FAISS/Chroma vector store
+* Add document summarization
+* Add multi-page Streamlit UI
+* Add drag-and-drop PDF viewer
+
+---
+
+## **Author**
+
+**Ekta Agrawal**
+AI • NLP • Full Stack Development
+
+---
+
 
 
