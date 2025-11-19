@@ -139,7 +139,7 @@ AI-Document-Assistant/
 ## **Author**
 
 **Ekta Agrawal**
-AI • NLP • Full Stack Development
+
 
 ---
 
